@@ -15,6 +15,25 @@ public class Filtro {
     private String marca;
     private int stock;
     private boolean existencia;
+    private boolean tipo;
+
+    public boolean isTipo() {
+        return tipo;
+    }
+
+    public void setTipo(boolean tipo) {
+        this.tipo = tipo;
+    }
+
+    public Filtro(int id, String codigo, String marca, int stock, boolean existencia, boolean tipo) {
+        this.id = id;
+        this.codigo = codigo;
+        this.marca = marca;
+        this.stock = stock;
+        this.existencia = existencia;
+        this.tipo = tipo;
+    }
+    
 
     public Filtro(int id, String codigo, String marca, int stock, boolean existencia) {
         this.id = id;
@@ -24,14 +43,14 @@ public class Filtro {
         this.existencia = existencia;
     }
 
-    public Filtro(String codigo, String marca, int stock, boolean existencia) {
+    public Filtro(String codigo, String marca, int stock, boolean existencia, boolean tipo) {
         this.codigo = codigo;
         this.marca = marca;
         this.stock = stock;
         this.existencia = existencia;
     }
 
-    public Filtro(String marca, int stock, boolean existencia) {
+    public Filtro(String marca, int stock, boolean existencia, boolean tipo) {
         this.marca = marca;
         this.stock = stock;
         this.existencia = existencia;
@@ -73,7 +92,7 @@ public class Filtro {
         this.stock = stock;
     }
 
-    public boolean isExistencia() {
+    public boolean getExistencia() {
         return existencia;
     }
 

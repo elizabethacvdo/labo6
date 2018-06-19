@@ -16,55 +16,52 @@ import java.util.logging.Logger;
  * @author LN710Q
  */
 public class Conexion {
+
     private String user;
-    private String  pass;
+    private String pass;
     private String driver;
     private String ur1;
-    
     private Connection cnx;
     public static Conexion instance;
-    
-    public synchronized static Conexion conectar() throws ClassNotFoundException, SQLException {
-        if(instance==null){
-            return new Conexion();
-        }
-        return instance;
-    }
-    
-    private Conexion() throws ClassNotFoundException, SQLException{
+
+   public synchronized static Conexion conectar(){
+       if(instance == null){
+               return new Conexion();
+       }
+           
+       return instance;
+   }
+
+    private Conexion() {
         cargarCredenciales();
-        
-        try{
+
+        try {
             Class.forName(this.driver);
-            cnx =(Connection) DriverManager.getConnection(ur1, user, pass);
-        }catch(ClassNotFoundException | SQLException ex){
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE,null,ex);
-            
+            cnx =(Connection) DriverManager.getConnection(this.ur1, this.user,this. pass);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+
         }
-        
+
     }
-    
-    
-    private void cargarCredenciales(){
-        user="root";
-        pass="";
-        driver="com.mysql.jdbc.Driver";
-        ur1="jdbc:mysql//localhost/fltros";
-        
-        
+
+    private void cargarCredenciales() {
+        user = "root";
+        pass = "";
+        driver = "com.mysql.jdbc.Driver";
+        ur1 = "jdbc:mysql://localhost/filtros_aceite";
+
     }
-    
-    public Connection getCnx(){
+
+    public Connection getCnx() {
         return cnx;
     }
-    
-    
-    public void cerrarConexion(){
-        instance= null;
+
+    public void cerrarConexion() {
+        instance = null;
     }
-    
+
     //instalar xampp
     //hacer un catalogo
     //hacer mas check
-    
 }
